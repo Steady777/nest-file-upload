@@ -1,7 +1,5 @@
 import { 
-  Controller,
-  Get,
-  Post,
+  Controller, Get, Post,
   UploadedFile,
   UseInterceptors, 
 } from '@nestjs/common';
@@ -22,6 +20,6 @@ export class AppController {
   @UseInterceptors(FileInterceptor('file', multerOption))
   fileUpload(@UploadedFile() file: Express.Multer.File) {
     console.log(file);
-    return 'File Upload';
+    return '${file.originalname} File Uploaded check http://localhost:3000/uploads/${file.filename}';
   }
 }
